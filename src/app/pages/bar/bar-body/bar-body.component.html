@@ -1,0 +1,79 @@
+<div class="container">
+  <br />
+  <h1>Listado de Bares</h1>
+  <hr />
+
+  <div class="row">
+    <div class="col text-right">
+      <button routerLink="/bar/nuevo" class="btn btn-primary">
+        <i class="fa fa-plus"></i>
+        Agregar
+      </button>
+    </div>
+  </div>
+
+  <table
+    *ngIf="!cargando && bar.length > 0"
+    class="table mt-3 animated fadeIn faster animated fadeIn faster"
+  >
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">descripcion</th>
+        <th scope="col">estado</th>
+        <th scope="col">habierto</th>
+        <th scope="col">telefono</th>
+        <th scope="col">ubicacion</th>
+        <th scope="col">votacion</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bares of bar; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ bares.nombre }}</td>
+        <td>{{ bares.descripcion }}</td>
+        <td>{{ bares.estado }}</td>
+        <td>{{ bares.habierto }}</td>
+        <td>{{ bares.telefono }}</td>
+        <td>{{ bares.ubicacion }}</td>
+        <td>{{ bares.votacion }}</td>
+        <td>
+          <button class="btn btn-info mr-1" [routerLink]="['/bar', bares.id]">
+            <i class="fa fa-pen"></i>
+          </button>
+
+          <button
+            class="btn btn-danger"
+            (click)="borrarHeroe(bares, i)"
+            id="boton-borar"
+          >
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    *ngIf="!cargando && bar.length === 0"
+    class="alert alert-warning text-center mt-3 animated fadeIn faster"
+  >
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+  </div>
+  <div
+    *ngIf="cargando"
+    class="alert alert-info text-center mt-3 animated fadeIn faster"
+  >
+    <h4 class="alert-heading">Cargando</h4>
+    <p>
+      <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+    </p>
+    <p class="mb-0">
+      Espere por favor
+    </p>
+  </div>
+</div>

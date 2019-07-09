@@ -1,0 +1,166 @@
+<div class="container">
+  <h1>Bares <small>en Bolivia</small></h1>
+  <hr />
+
+  <div class="row text-right">
+    <div class="col">
+      <button class="btn btn-danger" routerLink="/bar">
+        <i class="fa fa-arrow-left"></i>
+        Regresar
+      </button>
+    </div>
+  </div>
+
+  <div class="row animated fadeIn faster">
+    <div class="col">
+      <form (ngSubmit)="guardar(f)" #f="ngForm">
+        <div class="form-group">
+          <label>Firebase ID</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Firebase ID"
+            [(ngModel)]="bar.id"
+            name="id"
+            disabled="disabled"
+          />
+          <small class="form-text text-muted">Este campo es autogenerado</small>
+        </div>
+        <div class="form-group">
+          <label>Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre del bar"
+            [(ngModel)]="bar.nombre"
+            name="nombre"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>Descripcion</label>
+          <textarea
+            class="form-control"
+            placeholder="Descripcion del Bar"
+            [(ngModel)]="bar.descripcion"
+            name="descripcion"
+            required
+          >
+          </textarea>
+        </div>
+        <div class="form-group">
+          <label>Atencion</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="bar.atencionDias"
+            name="atencionDias"
+            placeholder="introducir dias"
+          />
+          <br />
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="bar.atencionHoras"
+            name="atencionHoras"
+            placeholder="introducir hora inicio-fin"
+          />
+        </div>
+        <div class="form-group">
+          <label>Estado</label>
+          <br />
+          <select class="custom-select" [(ngModel)]="bar.estado" name="estado">
+            <option value="" disabled>Choose a state</option>
+            <option [value]="true">Habilitado</option>
+            <option [value]="false">Desabilitado</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Foto</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Introducir URL"
+            [(ngModel)]="bar.foto"
+            name="foto"
+            required
+          />
+        </div>
+        <!-- <div class="form-group">
+          <label>Foto</label>
+          <div class="custom-file">
+            <input
+              type="file"
+              class="custom-file-input"
+              id="customFileLang"
+              lang="es"
+            />
+            <label class="custom-file-label" for="customFileLang"
+              >Introducir URL del archivo</label
+            >
+          </div>
+        </div> -->
+        <div class="form-group">
+          <label>Habierto</label>
+          <select
+            class="custom-select"
+            [(ngModel)]="bar.habierto"
+            name="habierto"
+          >
+            <option selected="selected" disabled>Plan...</option>
+            <option *ngFor="let hab of habilitadoBoolean" [value]="hab.value">{{
+              hab.text
+            }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Telefono</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="bar.telefono"
+            name="telefono"
+            placeholder="numero de telefono"
+          />
+        </div>
+        <div class="form-group">
+          <label>Dirreccion</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="bar.direccion"
+            name="direccion"
+            placeholder="direccion del bar"
+          />
+        </div>
+        <div class="form-group">
+          <label>Ubicacion</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="bar.ubicacion"
+            name="ubicacion"
+            placeholder="Ubicacion del bar"
+          />
+        </div>
+        <div class="form-group">
+          <label>Popularidad</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="bar.voto"
+            name="voto"
+            placeholder="Popularidad del bar"
+          />
+        </div>
+        <hr />
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary w-25">
+            <i class="fa fa-save"></i>
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
