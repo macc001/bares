@@ -12,18 +12,19 @@ export class BarService {
   constructor(private http: HttpClient) {}
 
   crearHeroe(bar: BarModel) {
+    console.log(JSON.parse(bar.estado));
     const barTemp = {
       id: bar.id,
       atencion: bar.atencion,
       descripcion: bar.descripcion,
       direccion: bar.direccion,
-      estado: bar.estado,
+      estado: JSON.parse(bar.estado),
       foto: bar.foto,
-      habierto: bar.habierto,
+      habierto: JSON.parse(bar.habierto),
       nombre: bar.nombre,
       telefono: bar.telefono,
       ubicacion: bar.ubicacion,
-      voto: bar.voto
+      votacion: +bar.votacion
     };
     return this.http.post(`${this.url}/bares.json`, barTemp).pipe(
       map((resp: any) => {

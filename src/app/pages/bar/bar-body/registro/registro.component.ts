@@ -14,6 +14,8 @@ import { BarService } from "../../bar-negocio/services-bar/bar.service";
 })
 export class RegistroComponent implements OnInit {
   bar: BarModel = new BarModel();
+  atencionDias: string;
+  atencionHoras: string;
 
   habilitadoBoolean = [
     { value: true, text: "Habilitado" },
@@ -24,8 +26,7 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get("id");
-
-    if (id !== "nuevo") {
+    if (id !== null) {
       this.barService.getHeroe(id).subscribe((resp: BarModel) => {
         this.bar = resp;
         this.bar.id = id;
@@ -35,7 +36,6 @@ export class RegistroComponent implements OnInit {
 
   guardar(form: NgForm) {
     if (form.invalid) {
-      console.log("Formulario no válido");
       return;
     }
     Swal.fire({
@@ -46,8 +46,8 @@ export class RegistroComponent implements OnInit {
     });
     Swal.showLoading();
     const atencion = {
-      dias: this.bar.atencionDias,
-      horas: this.bar.atencionHoras
+      dias: this.atencionDias,
+      horario: this.atencionHoras
     };
     this.bar.atencion = atencion;
     let peticion: Observable<any>;

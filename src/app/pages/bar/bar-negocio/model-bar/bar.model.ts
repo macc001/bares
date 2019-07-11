@@ -1,15 +1,13 @@
 export class BarModel {
   id: string;
-  atencionDias: string;
-  atencionHoras: string;
   atencion: any;
   descripcion: string;
   direccion: string;
-  estado: boolean;
+  estado: string;
   foto: string;
-  habierto: boolean;
+  habierto: string;
   nombre: string;
   telefono: string;
   ubicacion: string;
-  voto: number;
+  votacion: number;
 }

@@ -13,7 +13,7 @@
 
   <div class="row animated fadeIn faster">
     <div class="col">
-      <form (ngSubmit)="guardar(f)" #f="ngForm">
+      <form ngNativeValidate (ngSubmit)="guardar(f)" #f="ngForm">
         <div class="form-group">
           <label>Firebase ID</label>
           <input
@@ -53,23 +53,30 @@
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="bar.atencionDias"
+            [(ngModel)]="atencionDias"
             name="atencionDias"
             placeholder="introducir dias"
+            required
           />
           <br />
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="bar.atencionHoras"
+            [(ngModel)]="atencionHoras"
             name="atencionHoras"
             placeholder="introducir hora inicio-fin"
+            required
           />
         </div>
         <div class="form-group">
           <label>Estado</label>
           <br />
-          <select class="custom-select" [(ngModel)]="bar.estado" name="estado">
+          <select
+            class="custom-select"
+            [(ngModel)]="bar.estado"
+            required
+            name="estado"
+          >
             <option value="" disabled>Choose a state</option>
             <option [value]="true">Habilitado</option>
             <option [value]="false">Desabilitado</option>
@@ -106,6 +113,7 @@
             class="custom-select"
             [(ngModel)]="bar.habierto"
             name="habierto"
+            required
           >
             <option selected="selected" disabled>Plan...</option>
             <option *ngFor="let hab of habilitadoBoolean" [value]="hab.value">{{
@@ -121,6 +129,7 @@
             [(ngModel)]="bar.telefono"
             name="telefono"
             placeholder="numero de telefono"
+            required
           />
         </div>
         <div class="form-group">
@@ -131,6 +140,7 @@
             [(ngModel)]="bar.direccion"
             name="direccion"
             placeholder="direccion del bar"
+            required
           />
         </div>
         <div class="form-group">
@@ -141,6 +151,7 @@
             [(ngModel)]="bar.ubicacion"
             name="ubicacion"
             placeholder="Ubicacion del bar"
+            required
           />
         </div>
         <div class="form-group">
@@ -148,9 +159,10 @@
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="bar.voto"
+            [(ngModel)]="bar.votacion"
             name="voto"
             placeholder="Popularidad del bar"
+            required
           />
         </div>
         <hr />
